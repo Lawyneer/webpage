@@ -1,0 +1,80 @@
+/*
+	This website is published under teh GNU General Public License.
+	As a result, you can redistribute it and/or modify it under the
+	terms of the GNU General Public License as published by the Free
+	Software Foundation, either version 3 of the License, or (at your
+	option) any later version.
+
+    This website is published in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+    GNU General Public License for more details.
+	
+	A copy of the GNU General Public License can be found at 
+	https://www.gnu.org/licenses/.
+
+	This website is based on a templeate from Aline Abler
+	https://github.com/Jereviendrai/triangly
+*/
+
+
+/* Example of how you can use your own style sheet to customize Triangly */
+:root {
+    /* Triangly allows you to redefine its color scheme */
+    --accent-color: #9cad73;
+    --background-color: #1b1b1d;
+
+    /* You can also customize the spacing between triangles */
+    --big-margin: 1.5em;
+    --small-margin: 0.75em;
+}
+
+html, body {
+    background-color: #313131;
+    color: white;
+    font-family: sans-serif;
+    font-size: 1.0em;
+}
+
+div#picture {
+    background-size: cover;
+    background-image: url("../images/ham_radio.jpg");
+}
+
+div#clock {
+    background-size: cover;
+    background-image: url("../images/clock.jpg");
+}
+
+div.accent {
+    color: black;
+}
+
+.trapezoid div.text {
+    text-align: justify;
+}
+
+a {
+    color: white;
+}
+
+/*div.accent-green a
+	{color: #9cad73
+}
+
+div.accent-green a:visited {
+	color: #9cad73;
+}
+
+div.accent-green a:hover {
+	color: #9cad73;
+}
+
+div.accent-green a:active {
+	color: #9cad73;
+}
+
+div.accent-green {
+	color: #9cad73;
+}
+*/

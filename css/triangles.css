@@ -1,0 +1,371 @@
+/*
+	This website is published under teh GNU General Public License.
+	As a result, you can redistribute it and/or modify it under the
+	terms of the GNU General Public License as published by the Free
+	Software Foundation, either version 3 of the License, or (at your
+	option) any later version.
+
+    This website is published in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+    GNU General Public License for more details.
+	
+	A copy of the GNU General Public License can be found at 
+	https://www.gnu.org/licenses/.
+
+	This website is based on a templeate from Aline Abler
+	https://github.com/Jereviendrai/triangly
+*/
+:root {
+    --big-margin: 2em;
+    --small-margin: 1em;
+    --tiny-margin: 0.5em;
+    --max-side: calc((1300px - 4.15 * var(--big-margin)) * 1.15 / 3);
+    --inner-margin: calc(var(--max-side) * 0.07);
+
+    --small-triangle-side: calc(var(--max-side) * 0.5 - var(--small-margin) * 0.86 * 2);
+
+    --wrapper-width: 1300px;
+    --trapezoid-big-width: calc(var(--max-side) * 0.86 + var(--big-margin) * 0.5);
+    --triangle-left-big-margin: calc(var(--big-margin) * 0.5);
+    --triangle-right-big-margin: var(--big-margin);
+    --trapezoid-right-big-margin: calc(0.5 * var(--big-margin));
+}
+
+@media (max-width: 1300px) {
+    :root {
+        --max-side: calc((100vw - 4.15 * var(--big-margin)) * 1.15 / 3);
+
+        --wrapper-width: 110%;
+    }
+}
+
+@media (max-width: 1000px) {
+    :root {
+        --max-side: calc((100vw - 2.7 * var(--big-margin)) * 1.15 / 2);
+    }
+}
+
+@media (max-width: 500px) {
+    :root {
+        --big-margin: 1.5em;
+        --small-margin: 0.75em;
+        --tiny-margin: 0.25em;
+        --max-side: calc((100vw - 0.5 * var(--big-margin)) * 1.15 );
+
+        --trapezoid-big-width: calc(var(--max-side) * 0.86 + var(--big-margin) * 0.75);
+        --triangle-left-big-margin: 0;
+        --triangle-right-big-margin: calc(var(--big-margin) * 0.7);
+        --trapezoid-right-big-margin: 0;
+    }
+}
+
+html, body {
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+    width: 100%;
+    font-size: calc(var(--max-side) * 0.035);
+}
+
+h1 {
+    font-size: calc(var(--max-side) * 0.07);
+}
+
+h2 {
+    font-size: calc(var(--max-side) * 0.05);
+}
+
+h3 {
+    font-size: calc(var(--max-side) * 0.042);
+}
+
+p {
+    font-size: calc(var(--max-side) * 0.035);
+}
+
+div#wrapper {
+    margin: auto;
+    width: var(--wrapper-width)
+}
+
+div.accent {
+    background-color: var(--accent-color, #73ad9c);
+}
+
+div.text {
+    padding-left: calc(2 * var(--inner-margin));
+    position: relative;
+    left: calc(-1 * var(--inner-margin));
+}
+
+div.title {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.triangle-left > div.title {
+    justify-content: flex-start;
+    padding-left: calc(var(--inner-margin) / 2);
+}
+
+.triangle-right > div.title {
+    justify-content: flex-end;
+    padding-right: calc(var(--inner-margin) / 2);
+}
+
+div.transparent {
+    background: none;
+}
+
+div#top-shape {
+    width: calc((var(--max-side) * 0.86 + var(--big-margin) * 1.5) * 3);
+    height: calc((var(--max-side) * 0.5) + var(--big-margin));
+    margin-bottom: calc(var(--big-margin) * -0.25);
+    background-color: var(--accent-color, #73ad9c);
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        100% 100%,
+        66.67% 0,
+        33.33% 100%
+    );
+    -webkit-clip-path: polygon(
+        0 0,
+        100% 0,
+        100% 100%,
+        66.67% 0,
+        33.33% 100%
+    );
+}
+
+.col {
+    width: calc(var(--max-side) * 0.86 + var(--big-margin) * 1.5);
+    float: left;
+}
+
+.triangle, .trapezoid {
+    clear: both;
+    float: left;
+    background-color: var(--background-color, #ACACAC);
+}
+
+.triangle-big {
+    height: calc(var(--max-side) * 1);
+    width: calc(var(--max-side) * 0.86);
+    margin-top: calc((var(--max-side) * -0.5) + (var(--big-margin) * 0.86));
+}
+
+.trapezoid-big {
+    height: calc(var(--max-side) * 2 + (var(--big-margin) * 2 * 0.86));
+    width: var(--trapezoid-big-width);
+    margin-top: calc((var(--max-side) * -0.5) + (var(--big-margin) * 0.86));
+}
+
+.triangle-small {
+    height: calc(var(--max-side) * 0.5 - var(--small-margin) * 0.86 * 2);
+    width: calc((var(--max-side) * 0.5 - var(--small-margin) * 0.86 * 2) * 0.86);
+    margin-top: calc((var(--max-side) * -0.25) + (var(--small-margin) * 0.86 * 3));
+}
+
+.triangle-tiny {
+    height: calc(var(--small-triangle-side) * 0.5 - var(--tiny-margin) * 0.86 * 2);
+    width: calc((var(--small-triangle-side) * 0.5 - var(--tiny-margin) * 0.86 * 2) * 0.86);
+    margin-top: calc((var(--small-triangle-side) * -0.25) + (var(--tiny-margin) * 0.86 * 3));
+}
+
+.triangle-right .triangle-small {
+    margin-left: calc((var(--max-side) * 0.5 * 0.86) + var(--small-margin) * 1.5);
+}
+
+.triangle-right .triangle-tiny {
+    margin-left: calc((var(--small-triangle-side) * 0.5 * 0.86) + var(--tiny-margin) * 1.5);
+}
+
+.triangle-left .triangle-a {
+    margin-top: 0;
+}
+
+.triangle-left .triangle-b.triangle-small {
+    margin-left: var(--small-margin);
+}
+
+.triangle-left .triangle-b.triangle-tiny {
+    margin-left: var(--tiny-margin);
+}
+
+.triangle-left .triangle-d.triangle-small {
+    margin-top: calc((var(--max-side) * -0.75) + (var(--small-margin) * 0.86));
+    margin-left: calc((var(--max-side) * 0.5 * 0.86) + var(--small-margin) * 1.5);
+}
+
+.triangle-left .triangle-d.triangle-tiny {
+    margin-top: calc((var(--small-triangle-side) * -0.75) + (var(--tiny-margin) * 0.86));
+    margin-left: calc((var(--small-triangle-side) * 0.5 * 0.86) + var(--tiny-margin) * 1.5);
+}
+
+.triangle-right .triangle-a {
+    margin-top: 0;
+}
+
+.triangle-right .triangle-b.triangle-small {
+    margin-left: calc((var(--max-side) * 0.5 * 0.86) + var(--small-margin) * 0.5);
+}
+
+.triangle-right .triangle-b.triangle-tiny {
+    margin-left: calc((var(--small-triangle-side) * 0.5 * 0.86) + var(--tiny-margin) * 0.5);
+}
+
+.triangle-right .triangle-d.triangle-small {
+    margin-top: calc((var(--max-side) * -0.75) + (var(--small-margin) * 0.86));
+    margin-left: 0;
+}
+
+.triangle-right .triangle-d.triangle-tiny {
+    margin-top: calc((var(--small-triangle-side) * -0.75) + (var(--tiny-margin) * 0.86));
+    margin-left: 0;
+}
+
+.triangle-spacer-big {
+    height: calc(var(--max-side) * 1);
+    width: calc(var(--max-side) * 0.86);
+}
+
+.triangle-spacer-small {
+    height: calc(var(--max-side) * 0.5 - var(--small-margin) * 0.86 * 2);
+    width: calc((var(--max-side) * 0.5 - var(--small-margin) * 0.86 * 2) * 0.86);
+}
+
+.triangle-spacer-tiny {
+    height: calc(var(--small-triangle-side) * 0.5 - var(--tiny-margin) * 0.86 * 2);
+    width: calc((var(--small-triangle-side) * 0.5 - var(--tiny-margin) * 0.86 * 2) * 0.86);
+}
+
+.trapezoid > .triangle-spacer-big {
+    height: calc(var(--max-side) * 2);
+    width: calc(var(--max-side) * 0.86);
+}
+
+.triangle-left {
+    text-align: left;
+    clip-path: polygon(
+        0 0,
+        100% 50%,
+        0 100%
+    );
+    -webkit-clip-path: polygon(
+        0 0,
+        100% 50%,
+        0 100%
+    );
+}
+
+.triangle-left.triangle-big, .trapezoid-left.trapezoid-big {
+    margin-left: var(--triangle-left-big-margin);
+}
+
+.triangle-left > .triangle-spacer {
+    float: right;
+    shape-outside: polygon(
+        0 0,
+        100% 0%,
+        100% 100%,
+        1px 100%,
+        100% 50%
+
+    );
+}
+
+.triangle-right {
+    text-align: right;
+    clip-path: polygon(
+        0 50%,
+        100% 0,
+        100% 100%
+    );
+    -webkit-clip-path: polygon(
+        0 50%,
+        100% 0,
+        100% 100%
+    );
+}
+
+.triangle-right.triangle-big {
+    margin-left: var(--triangle-right-big-margin);
+}
+
+.trapezoid-right.trapezoid-big {
+    margin-left: var(--trapezoid-right-big-margin);
+}
+
+.triangle-right > .triangle-spacer {
+    float: left;
+    shape-margin: var(--inner-margin);
+    shape-outside: polygon(
+        0 0,
+        100% 0,
+        0 50%,
+        100% 100%,
+        0 100%
+    );
+}
+
+.trapezoid-left {
+    text-align: left;
+    clip-path: polygon(
+        0 0,
+        100% 25%,
+        100% 75%,
+        0 100%
+    );
+    -webkit-clip-path: polygon(
+        0 0,
+        100% 25%,
+        100% 75%,
+        0 100%
+    );
+}
+
+.trapezoid-left > .triangle-spacer {
+    float: right;
+    shape-outside: polygon(
+        0 0,
+        100% 0%,
+        100% 100%,
+        1px 100%,
+        100% 75%,
+        100% 25%
+
+    );
+}
+
+.trapezoid-right {
+    text-align: right;
+    clip-path: polygon(
+        0 75%,
+        0 25%,
+        100% 0,
+        100% 100%
+    );
+    -webkit-clip-path: polygon(
+        0 75%,
+        0 25%,
+        100% 0,
+        100% 100%
+    );
+}
+
+.trapezoid-right > .triangle-spacer {
+    float: left;
+    shape-margin: var(--inner-margin);
+    shape-outside: polygon(
+        0 0,
+        100% 0,
+        0 25%,
+        0 75%,
+        100% 100%,
+        0 100%
+    );
+}
+
